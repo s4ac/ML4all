@@ -1,5 +1,6 @@
+let cnv;
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	cnv = createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {

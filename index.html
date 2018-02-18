@@ -107,6 +107,15 @@
 		<div lang="latex" class="math">
 			w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}...+w_{5}x_{5}
 		</div>
+		<br> And here the
+		<code>JavaScript</code> implementation
+		<br>
+		<br>
+		<div class="snippet" id="code1">
+			<script>
+				setCode('simplePerceptron/feedForward.txt', 'code1');
+			</script>
+		</div>
 		<br> The the result of the dot product is the sum of the product of each input with its own weight. There is an important thing
 		to add: the bias. As you can see above the we are dealing with a sum of products. Therefore if we have an input value equal
 		to 0 it will always return 0. To avoid that we insert a third input called the bias that we set to 1.
@@ -118,21 +127,45 @@
 		<div class="math">
 			<img src="http://latex.codecogs.com/gif.latex?f(x)=\begin{cases}\phantom{}0&x%3C0\\1&x%3E=0\end{cases}" alt="">
 		</div>
-		<br> Therefore if the result of the dot product is greater or equal than 0 the result will be 1 otherwise it will be 0.
+		<br> And here the
+		<code>JavaScript</code> implementation
 		<br>
+		<br>
+		<div class="snippet" id="code2">
+			<script>
+				setCode('simplePerceptron/activation.txt', 'code2');
+			</script>
+		</div>
+		<br> Therefore if the result of the dot product is greater or equal than 0 the result will be 1 otherwise it will be 0.
+		<br> So far so good, now we need the last piece, a way to train our perceptron. To do this we will teach the the artificial
+		neuron to learn from his errors with the following formula:
+		<br>
+		<br>
+		<div lang="latex" class="math">
+			\Delta W = error \times x_{i}
+		</div>
+		<br> And here the
+		<code>JavaScript</code> implementation
+		<br>
+		<br>
+		<div class="snippet" id="code3">
+			<script>
+				setCode('simplePerceptron/train.txt', 'code3');
+			</script>
+		</div>
 		<br> As already mentioned the perceptron is good in classifying linearly separable problems. Than lets consider a very simple
 		situation where we have a two-dimensional space separated by a wall and we want our perceptron to be able to classify if
 		the a random point placed in the space is either on one side or on the other.
 		<br> First we need to build our perceptron.
 		<br>
-		<div id="code1">
+		<div class="snippet" id="code4">
 			<script>
-				setCode('simplePerceptron/perceptron.js', 'code1');
+				setCode('simplePerceptron/perceptron.js', 'code4');
 			</script>
 		</div>
-		<div id="code2">
+		<div class="snippet" id="code5">
 			<script>
-				setCode('simplePerceptron/trainer.js', 'code2');
+				setCode('simplePerceptron/trainer.js', 'code5');
 			</script>
 		</div>
 		<div id="perceptronCanvas">
@@ -148,18 +181,6 @@
 		<br>
 		<br>
 		<br>
-		<pre class="code">
-				<span class="tr first-row"><span class="th"></span><code>   indented line</code></span>
-				<span class="tr e"><span class="th"></span><code>unindented line</code></span>
-				<span class="tr"><span class="th"></span><code>&#9;line starting and ending with tab&#9;</code></span>
-				<span class="tr e"><span class="th"></span><code></code></span>
-				<span class="tr"><span class="th"></span><code>the above line should be empty</code></span>
-				<span class="tr e"><span class="th"></span><code>overlong line that wraps around or so I hope because it's really long and should overflow the right sided margin of the web page in your browser</code></span>
-				<span class="tr"><span class="th"></span><code>fill up to ten</code></span>
-				<span class="tr e"><span class="th"></span><code>lines to check</code></span>
-				<span class="tr"><span class="th"></span><code>alignment</code></span>
-				<span class="tr e"><span class="th"></span><code>of numbers</code></span>
-				</pre>
 	</div>
 	<div class="footnotes">
 		<ol>

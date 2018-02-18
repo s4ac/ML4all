@@ -72,14 +72,10 @@ function f(x) {
 function play() {
 	playing = !playing;
 }
-
-let txt1;
 function setCode(file, id) {
-	jQuery.get(file, function (data) {
-		console.log(data);
-		txt1 = data;
-		CodeMirror(document.getElementById('code1'), {
-			value: txt1,
+	jQuery.get(file, (data) => {
+		CodeMirror(document.getElementById(id), {
+			value: data,
 			mode: "javascript"
 		});
 	}, 'text');

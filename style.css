@@ -98,3 +98,9 @@ pre.code span.th::before {
 .footnotes{
     font-size: 75%;
 }
+.snippet{
+    border: 3px solid #000;
+    /* background-color: tomato; */
+    padding: 5px;
+    /* margin-left: 20px; */
+}

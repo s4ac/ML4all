@@ -15,17 +15,11 @@ class Perceptron {
      * @returns 1 or -1
      */
     feedForward(inputs) {
-        //error handling
-        // if(inputs.length > this.numW){
-        //     console.log('INVALID INPUTS! This Perceptron takes only '+this.numW+' inputs');
-        //     return undefined;
-        // }else{
         let sum = 0;
         for (let i = 0; i < this.numW; i++) {
             sum += inputs[i] * this.weights[i];
         }
         return this.activate(sum);
-        // }
     }
     /**
      * activation function returns 0 or 1

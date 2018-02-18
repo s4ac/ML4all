@@ -8,6 +8,7 @@
 
 	<title>simplePerceptron</title>
 	<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
 	<script src="simplePerceptron/libraries/p5.js"></script>
 	<script src="simplePerceptron/libraries/p5.dom.js"></script>
 	<script src="simplePerceptron/libraries/p5.sound.js"></script>
@@ -15,6 +16,9 @@
 	<script src="simplePerceptron/trainer.js"></script>
 	<script src="simplePerceptron/sketch.js"></script>
 	<link rel="stylesheet" href="style.css">
+	<script src="codemirror/lib/codemirror.js"></script>
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	<script src="codemirror/mode/javascript/javascript.js"></script>
 	<style>
 	</style>
 </head>
@@ -26,45 +30,55 @@
 		<h2>What is a PERCEPTRON</h2>
 		A perceptron is an artificial neuron, it was developed between the 50’s and 60’s by the scientist
 		<a href="https://en.wikipedia.org/wiki/Frank_Rosenblatt">Frank Rosenblatt</a>. But before we start to describe how an artificial neuron works it is worth to understand how our
-		biological neurons operate. “The biological neuron is a nerve cell that provides the fundamental functional unit for the
-		nervous system of all animals” (deep learning oreilly)
+		biological neurons operate.
+		<br>
+		<blockquote>
+			“The biological neuron is a nerve cell that provides the fundamental functional unit for the nervous system of all animals”
+			<a href="#1">[1]</a>
+		</blockquote>
 
 		<h2>That said how does it really work?</h2>
-		Before getting into the functionalities let’s see how a neuron is made. Every neuron is composed by a cell body called soma.
-		The soma itself is attached to many dendrites but to only one axon. (Fig. 1) The Axon is a very long fiber that eventually
+		<img class="images" src="img/NEuron.png" alt="">
+		<br> Before getting into the functionalities let’s see how a neuron is made. Every neuron is composed by a cell body called
+		soma. The soma itself is attached to many dendrites but to only one axon. (Fig. 1) The Axon is a very long fiber that eventually
 		branches to connect to other neurons. The connection between the axon and the neuron is composed by two parts: the synapse
 		and the dendrite. The synapse process the impulse from the axon and transmits it to the dendrite that will deliver the
 		impulse to the soma or cell body. The soma reads an interprets the information carried by the impulse and sends a new impulse
 		to the axon. This procedure goes on and on endlessly. Neurons basically communicate each other via electro-chemical impulses.
-		The impulse to proceed from one neuron to the other must “be strong enough to activate the the release of chemicals across
-		a synaptic cleft“(deep learning oreilly). The impulse must surpass a the threshold of the synapses otherwise the chemicals
-		will not be released.
+		The impulse to proceed from one neuron to the other must
+		<blockquote>“be strong enough to activate the the release of chemicals across a synaptic cleft.“
+			<a href="#2">[2]</a>
+		</blockquote> The impulse must surpass a the threshold of the synapses otherwise the chemicals will not be released.
 
 		<h2>How does an artificial neuron work?</h2>
-		As already said at the end of the 50’s Frank Rosenblatt developed the first artificial neuron modelled onto the biological
+		<img class="images" src="img/perceptron.png" alt="">
+		<br> As already said at the end of the 50’s Frank Rosenblatt developed the first artificial neuron modelled onto the biological
 		one: the perceptron. The perceptron is a linear model for binary classification. It takes some inputs, those inputs are
 		than processed with dot product between themselves and the weights. The result is than fed to the step function that returns
 		0 or 1. The nature of the output gives the perceptron the possibility to learn to classify between two distinct states.
 		This means that it is a linear classifier, it can classify things that in a graph can be separated by a line.(???) Before
 		we deepen into the mathematical and algorithmic concepts regarding the perceptron it is worth to describe what the weights
-		are. The weights were introduced by Rosenblatt in his perceptron model. Those numbers express “the importance of the respective
-		inputs to the output” (http://neuralnetworksanddeeplearning.com/chap1.html). Therefore the weights define which input is
-		more important in order to get a desired output. The whole purpose of machine learning is to tune the weights of artificial
-		neurons, so that given a set of inputs the neuron will output a correct answer. It is important to make clear how important
-		it is to understand the role of the weights. If we look again at the fig. 2 we see a perceptron. Let’s assume this perceptron
-		can classify wether an animal is a dog or a cat given two inputs value like size and sound/pitch (assuming that is possible
-		to encode sound in a unique number). The value of the weights determines the output. In the case of the dog the weights
-		favour the size as a cat has always lower size while cats weights favour the pitch as cats have an higher pitch than dogs.
-		Of course chiwawas might be confused as dogs. But this because we would need much more inputs to really classify between
-		the two species.
+		are. The weights were introduced by Rosenblatt in his perceptron model. Those numbers express
+		<blockquote>
+			“the importance of the respective inputs to the output.”
+			<a href="#3">[3]</a>
+		</blockquote>Therefore the weights define which input is more important in order to get a desired output.
+		<u>The whole purpose of machine learning is to tune the weights of artificial neurons, so that given a set of inputs the neuron
+			will output a correct answer.</u>
+		It is important to make clear how important it is to understand the role of the weights. If we look again at the fig. 2 we
+		see a perceptron. Let’s assume this perceptron can classify wether an animal is a dog or a cat given two inputs value like
+		size and sound/pitch (assuming that is possible to encode sound in a unique number). The value of the weights determines
+		the output. In the case of the dog the weights favour the size as a cat has always lower size while cats weights favour
+		the pitch as cats have an higher pitch than dogs. Of course chiwawas might be confused as dogs. But this because we would
+		need much more inputs to really classify between the two species.
 		<h2>How does the weights tuning happen?</h2>
 		One of the methodologies for tuning the weights is with the method of
 		<b>supervised learning</b>. Here there is an great explanation by
 		<a href="http://natureofcode.com/book/chapter-10-neural-networks/">Daniel Shiffman</a>
 		<blockquote>
 			With this method[supervised learning], the network is provided with inputs for which there is a known answer. This way the
-			network can find out if it has made a correct guess. If it’s incorrect, the network can learn from its mistake and adjust
-			its weights. The process is as follows:
+			network can find out if it has made a correct guess.
+			<u>If it’s incorrect, the network can learn from its mistake and adjust its weights.</u> The process is as follows:
 			<br>
 			<ol>
 				<li>Provide the perceptron with inputs for which there is a known answer.
@@ -75,7 +89,9 @@
 				</li>
 				<li>Adjust all the weights according to the error.
 				</li>
-				<li>Return to Step 1 and repeat! (nature of code)</li>
+				<li>Return to Step 1 and repeat!
+					<a href="#4">[4]</a>
+				</li>
 			</ol>
 		</blockquote>
 
@@ -91,26 +107,34 @@
 		<div lang="latex" class="math">
 			w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}...+w_{5}x_{5}
 		</div>
-		<br>
-		The the result of the dot product is the sum of the product of each input with its own weight. There is an important thing
+		<br> The the result of the dot product is the sum of the product of each input with its own weight. There is an important thing
 		to add: the bias. As you can see above the we are dealing with a sum of products. Therefore if we have an input value equal
-		to 0 it will always return 0. To avoid that we insert a third input called the bias that we set to 1. <br>
-		<img src="img/perceptron2.png" alt="">
+		to 0 it will always return 0. To avoid that we insert a third input called the bias that we set to 1.
 		<br>
-		On the the other hand the step function will look like this
+		<img class="images" src="img/perceptron2.png" alt="">
+		<br> On the the other hand the step function will look like this
 		<br>
 		<br>
 		<div class="math">
-				<img src="http://latex.codecogs.com/gif.latex?f(x)=\begin{cases}\phantom{}0&x%3C0\\1&x%3E=0\end{cases}" alt="">
+			<img src="http://latex.codecogs.com/gif.latex?f(x)=\begin{cases}\phantom{}0&x%3C0\\1&x%3E=0\end{cases}" alt="">
 		</div>
-		<br> 
-		Therefore if the result of the dot product is greater or equal than 0 the result will be 1 otherwise it will be 0.
+		<br> Therefore if the result of the dot product is greater or equal than 0 the result will be 1 otherwise it will be 0.
 		<br>
+		<br> As already mentioned the perceptron is good in classifying linearly separable problems. Than lets consider a very simple
+		situation where we have a two-dimensional space separated by a wall and we want our perceptron to be able to classify if
+		the a random point placed in the space is either on one side or on the other.
+		<br> First we need to build our perceptron.
 		<br>
-		As already mentioned the perceptron is good in classifying linearly separable problems. Than lets consider a very simple situation
-		where we have a two-dimensional space separated by a wall and we want our perceptron to be able to classify if the a random
-		point placed in the space is either on one side or on the other. <br>
-		first we need to build our perceptron. 
+		<div id="code1">
+			<script>
+				setCode('simplePerceptron/perceptron.js', 'code1');
+			</script>
+		</div>
+		<div id="code2">
+			<script>
+				setCode('simplePerceptron/trainer.js', 'code2');
+			</script>
+		</div>
 		<div id="perceptronCanvas">
 
 		</div>
@@ -138,8 +162,24 @@
 				</pre>
 	</div>
 	<div class="footnotes">
-
+		<ol>
+			<li id="1">
+				Gibson, Adam, and Josh Patterson. Deep Learning: A Practitioner’s Approach. Sebastopol CA: O’Reilly, 2017.
+			</li>
+			<li id="2">
+				Ibid.
+			</li>
+			<li id="3">
+				<a href="http://neuralnetworksanddeeplearning.com">Nielsen, Michael A. “Neural Networks and Deep Learning,” 2015.</a>
+			</li>
+			<li id="4">
+				<a href="http://natureofcode.com/book/chapter-10-neural-networks/">Shiffman, Dan. “The Nature of Code.”</a>
+			</li>
+		</ol>
 	</div>
+	<script>
+
+	</script>
 </body>
 
 </html>

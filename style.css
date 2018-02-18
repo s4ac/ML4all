@@ -16,6 +16,13 @@ canvas {
 blockquote{
     font-style: italic;
 }
+img.images{
+    display: block;
+    margin: auto;
+    border: 3px solid  #000;
+    width: 75%;
+    min-width: 200px;
+}
 /* Bare bones style for the desired effect */
 pre.code {
     display: table;

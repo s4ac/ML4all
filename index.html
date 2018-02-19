@@ -52,7 +52,7 @@
 
 		<h2>How does an artificial neuron work?</h2>
 		<img class="images" src="img/perceptron.png" alt="">
-		<br> As already said at the end of the 50’s Frank Rosenblatt developed the first artificial neuron modelled onto the biological
+		<br> As already said at the end of the 50’s Frank Rosenblatt developed the first artificial neuron modeled onto the biological
 		one: the perceptron. The perceptron is a linear model for binary classification. It takes some inputs, those inputs are
 		than processed with dot product between themselves and the weights. The result is than fed to the step function that returns
 		0 or 1. The nature of the output gives the perceptron the possibility to learn to classify between two distinct states.
@@ -66,11 +66,11 @@
 		<u>The whole purpose of machine learning is to tune the weights of artificial neurons, so that given a set of inputs the neuron
 			will output a correct answer.</u>
 		It is important to make clear how important it is to understand the role of the weights. If we look again at the fig. 2 we
-		see a perceptron. Let’s assume this perceptron can classify wether an animal is a dog or a cat given two inputs value like
-		size and sound/pitch (assuming that is possible to encode sound in a unique number). The value of the weights determines
-		the output. In the case of the dog the weights favour the size as a cat has always lower size while cats weights favour
-		the pitch as cats have an higher pitch than dogs. Of course chiwawas might be confused as dogs. But this because we would
-		need much more inputs to really classify between the two species.
+		see a perceptron. Let’s assume this perceptron can classify whether an animal is a dog or a cat given two inputs value
+		like size and sound/pitch (assuming that is possible to encode sound in a unique number). The value of the weights determines
+		the output. In the case of the dog the weights favor the size as a cat has always lower size while cats weights favor the
+		pitch as cats have an higher pitch than dogs. Of course chiwawas might be confused as dogs. But this because we would need
+		much more inputs to really classify between the two species.
 		<h2>How does the weights tuning happen?</h2>
 		One of the methodologies for tuning the weights is with the method of
 		<b>supervised learning</b>. Here there is an great explanation by
@@ -165,7 +165,7 @@
 			</script>
 		</div>
 		<br> The
-		<code>Trainer class</code> will help us in classifying data and labelling it
+		<code>Trainer class</code> will help us in classifying data and labeling it
 		<br>
 		<br>
 		<div class="snippet" id="code5">
@@ -198,16 +198,41 @@
 		<div id="perceptronCanvas">
 
 		</div>
-		<button onclick="play()">PLAY/PAUSE</button> <button onclick="displayPerceptron()">SHOW PERCEPTRON</button>
+		<button onclick="play()">PLAY/PAUSE</button>
+		<button onclick="displayPerceptron()">SHOW PERCEPTRON</button>
+		<br>
+		<br>If you visualize the perceptron you can see that after enough training the weights will stabilize. When this point is reached
+		the perceptron is trained and will always recognize if a point is above or below the line.
 		<br>
 		<br>
+		<h1>If you made it until here than tap on your shoulder, you understood how a perceptron works!</h1>
 		<br>
 		<br>
+		<h2>Neural Networks</h2>
+		<br>
+		<br>We already mentioned that a a single perceptron can ony solve
+		<b>linearly separable</b> problems. But what does it mean?
+		<br> Let's look at the image below:
 		<br>
 		<br>
+		<img class="images" src="img/linear.png" alt="">
+		<br>
+		<br>The image shows two data-sets, the one on the left is linearly separable, similar to our experiment above. The data-set
+		on the right shows data that is not linearly separable.
+		<b>Linearly separable</b> data-sets are ones where it is possible to separate the data with a straight line, or a plane in
+		a three dimensional dataset. However if the data is distributed like in the example on the right side than it is not linearly
+		separable anymore, and therefore a perceptron will not be able to solve such a problem. A famous non linearly separable
+		problem is the XOR truth table.
 		<br>
 		<br>
+		<img class="images" src="img/XOR.png" alt="">
 		<br>
+		<br> The XOR logical operator returns true if one of the two elements is false, and returns false if they are both either true
+		or false. It is impossible to draw a single line that separates the true from the false, therefore one perceptron can't
+		solve such a problem. To do so we need
+		<b>multi-layered perceptron</b>, a network of many perceptrons.
+		<br>
+		<br><img class="images" src="img/multiLayer.png" alt="">
 	</div>
 	<div class="footnotes">
 		<ol>

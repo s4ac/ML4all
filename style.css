@@ -13,6 +13,14 @@ canvas {
     display: block;
     margin: auto;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: 'Source Code Pro', monospace;
+}
 blockquote{
     font-style: italic;
 }
@@ -20,7 +28,7 @@ img.images{
     display: block;
     margin: auto;
     border: 3px solid  #000;
-    width: 75%;
+    /* width: 75%; */
     min-width: 200px;
 }
 /* Bare bones style for the desired effect */

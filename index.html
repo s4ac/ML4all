@@ -8,6 +8,7 @@
 
 	<title>simplePerceptron</title>
 	<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 	<script src="jquery-3.3.1.min.js"></script>
 	<script src="simplePerceptron/libraries/p5.js"></script>
 	<script src="simplePerceptron/libraries/p5.dom.js"></script>
@@ -98,15 +99,11 @@
 		Let’s dig into the mechanics of the perceptron. The first thing to understand is this formula, the dot product:
 		<br>
 		<br>
-		<div lang="latex" class="math">
-			$$\sum_{i=1}^{n} x_{i} w_{i} $$
-		</div>
+		<p class="math">$$\sum_{i=1}^{n} x_{i} w_{i} $$</p>
 		<br> Given a perceptron with 5 inputs the result of the dot product will be
 		<br>
 		<br>
-		<div lang="latex" class="math">
-			w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}...+w_{5}x_{5}
-		</div>
+		<p class="math">$$w_{1}x_{1}+w_{2}x_{2}+w_{3}x_{3}...+w_{5}x_{5}$$</p>
 		<br> And here the
 		<code>JavaScript</code> implementation
 		<br>
@@ -124,9 +121,9 @@
 		<br> On the the other hand the step function will look like this
 		<br>
 		<br>
-		<div class="math">
-			<img src="http://latex.codecogs.com/gif.latex?f(x)=\begin{cases}\phantom{}0&x%3C0\\1&x%3E=0\end{cases}" alt="">
-		</div>
+		<p class="math">
+			$$f(x)=\begin{cases}\phantom{}0 & x > 0 \\ 1 & x \leq 0\end{cases}$$
+		</p>
 		<br> And here the
 		<code>JavaScript</code> implementation
 		<br>
@@ -141,9 +138,9 @@
 		neuron to learn from his errors with the following formula:
 		<br>
 		<br>
-		<div lang="latex" class="math">
-			\Delta W = error \times x_{i}
-		</div>
+		<p class="math">
+			$$\Delta W = error \times x_{i}$$
+		</p>
 		<br> And here the
 		<code>JavaScript</code> implementation
 		<br>
@@ -232,7 +229,8 @@
 		solve such a problem. To do so we need
 		<b>multi-layered perceptron</b>, a network of many perceptrons.
 		<br>
-		<br><img class="images" src="img/multiLayer.png" alt="">
+		<br>
+		<img class="images" src="img/multiLayer.png" alt="">
 	</div>
 	<div class="footnotes">
 		<ol>

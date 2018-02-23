@@ -102,6 +102,7 @@ pre.code span.th::before {
 }
 .math{
     text-align: center;
+    font-size: 150%;
 }
 .footnotes{
     font-size: 75%;

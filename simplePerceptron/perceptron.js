@@ -5,6 +5,7 @@ class Perceptron {
      */
     constructor(num) {
         this.numW = num;
+        this.lr = 0.01;//learning rate
         this.weights = [];
         for (let i = 0; i < this.numW; i++)this.weights.push(random(-1, 1));
     }
@@ -15,16 +16,16 @@ class Perceptron {
      */
     feedForward(inputs) {
         //error handling
-        if(inputs.length > this.numW){
-            console.log('INVALID INPUTS! This Perceptron takes only '+this.numW+' inputs');
-            return undefined;
-        }else{
+        // if(inputs.length > this.numW){
+        //     console.log('INVALID INPUTS! This Perceptron takes only '+this.numW+' inputs');
+        //     return undefined;
+        // }else{
             let sum;
             for (let i = 0; i < this.numW; i++){
                 sum += inputs[i] * this.weights[i];
             }
             return this.activate(sum);
-        }
+        // }
     }
     /**
      * activation function returns 0 or 1
@@ -33,6 +34,19 @@ class Perceptron {
      */
     activate(num) {
         return num >= 0 ? 1 : -1;
+    }
+    /**
+     * this function trains the perceptron
+     * aka it tunes the weights to always obtain the wanted answer
+     * @param {Array} inputs Arrray of values
+     * @param {int} desired the desired output 
+     */
+    train(inputs, desired){
+        let guess = this.feedForward(inputs);
+        // let guess = 1;
+        let error = desired - guess;
+        for (let i = 0; i < this.numW; i++)this.weights[i] += this.lr * error * inputs[i];
+        this.printWeights();
     }
     printWeights() {
         console.table(this.weights);
